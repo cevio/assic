@@ -2,6 +2,9 @@
   "name": "assic",
   "version": "1.0.0",
   "description": "arallel to serial module which like async to sync",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rm -rf ./dist && tsc -d"
   },
