@@ -1,5 +1,5 @@
 export type TAssicStacks = {
-  handler: () => Promise<any>,
+  handler: () => Promise<any> | any,
   resolve: (data: any) => void,
   reject: (e: any) => void,
 };
@@ -22,7 +22,7 @@ export class Assic {
     return this;
   }
 
-  public use<R = any>(callback: () => Promise<R>) {
+  public use<R = any>(callback: () => Promise<R> | R) {
     return new Promise<R>((resolve, reject) => {
       this.stacks.push({
         handler: callback,
