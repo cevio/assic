@@ -1,6 +1,6 @@
 {
   "name": "assic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "arallel to serial module which like async to sync",
   "main": "dist/index.js",
   "files": [
@@ -9,6 +9,11 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc -d"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cevio/assic.git"
+  },
+  "homepage": "https://github.com/cevio/assic",
   "devDependencies": {
     "@types/node": "^14.14.12",
     "ts-node": "^9.1.1",
