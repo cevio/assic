@@ -8,6 +8,8 @@ export class Assic {
   private status = false;
   private readonly stacks: TAssicStacks[] = [];
 
+  constructor(private readonly max: number = 1) {}
+
   get locked() {
     return this.status;
   }
@@ -36,11 +38,18 @@ export class Assic {
   }
 
   private notify() {
-    const chunk = this.stacks.shift();
-    if (!chunk) return this.unlock();
-    Promise.resolve(chunk.handler())
-      .then(chunk.resolve)
-      .catch(chunk.reject)
-      .finally(() => this.notify());
+    const len = this.stacks.length;
+    if (!len) return this.unlock();
+    const i = len > this.max ? this.max : len;
+    const chunk = this.stacks.slice(0, i);
+    this.stacks.splice(0, i);
+    Promise.all(
+      chunk.map(c => {
+        return Promise.resolve(c.handler())
+          .then(c.resolve)
+          .catch(c.reject);
+      })
+    )
+    .finally(() => this.notify());
   }
 }

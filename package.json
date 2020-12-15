@@ -1,6 +1,6 @@
 {
   "name": "assic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "arallel to serial module which like async to sync",
   "main": "dist/index.js",
   "files": [
